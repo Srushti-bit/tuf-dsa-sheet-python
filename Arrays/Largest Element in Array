@@ -1,0 +1,12 @@
+nums = [3, 3, 6, 1]
+
+class Solution:
+    def largestElement(self, nums):
+        max = nums[0]
+        for i in range(1, len(nums)):
+            if nums[i] > max:
+                max = nums[i]
+        return max 
+
+obj = Solution()
+print(obj.largestElement(nums))           
