@@ -1,7 +1,16 @@
 # Progress Tracker
 
 ## Arrays
-- [ ] Largest Element in Array
-- [ ] Second Largest Element
-- [ ] Check if Array is Sorted
-      - [ Leetcode ] 1752. Check if Array Is Sorted and Rotated
+Date: 05-06-2026
+
+- [✔] Largest Element in Array
+- [✔] Second Largest Element
+- [✔] Check if Array is Sorted
+      - [✔] Leetcode 1752. Check if Array Is Sorted and Rotated
+
+  Date: 06-06-2026
+
+  - [✔] Remove duplicates from Sorted array
+  - [✔] Left Rotate Array by One
+  - [✔] Right Rotate Array by One
+  - [✔] Move Zeros to End
