@@ -1,0 +1,20 @@
+arr = [1, 2, 3, 4, 6] 
+k = 6
+
+class Solution:
+    def binarySearch(self, arr, k):
+        p, q = 0, len(arr) - 1
+        while p <=q:
+            mid = (p + q) // 2
+            if arr[mid] == k:
+                return True
+            elif arr[mid] < k:
+                p = mid + 1
+            else:
+                q = mid - 1
+        return False
+
+obj = Solution()
+print(obj.binarySearch(arr, k))                
+                
+
