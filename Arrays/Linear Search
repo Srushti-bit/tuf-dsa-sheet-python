@@ -1,0 +1,13 @@
+nums = [2, -4, 4, 0, 10]
+target = 6
+
+class Solution:
+    def linearSearch(self, nums, target):
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] == target:
+                return 1
+        return -1
+
+obj = Solution()
+print(obj.linearSearch(nums, target))        
