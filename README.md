@@ -15,8 +15,8 @@ See `progress.md` for completed problems.
 
 - Arrays
 - Strings
-- Binary Search
 - Linked List
+- Binary Search
 - Stack & Queue
 - Trees
 - BST
