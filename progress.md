@@ -24,3 +24,8 @@ Date: 08-06-2026
 
 - [✔] Union of two sorted arrays
 - [✔] Find missing number
+
+Datw: 11-06-2026
+
+- [✔] Maximum Consecutive Ones
+- [✔] Find the number that appears once, and other numbers twice.
