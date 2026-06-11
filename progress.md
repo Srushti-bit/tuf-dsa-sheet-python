@@ -10,13 +10,17 @@ Date: 05-06-2026
 
 Date: 06-06-2026
 
-  - [✔] Remove duplicates from Sorted array
-  - [✔] Left Rotate Array by One
-  - [✔] Right Rotate Array by One
-  - [✔] Move Zeros to End
+- [✔] Remove duplicates from Sorted array
+- [✔] Left Rotate Array by One
+- [✔] Right Rotate Array by One
+- [✔] Move Zeros to End
 
 Date: 07-06-2026
 
-  - [✔] Linear Search
-  - [✔] Binary Search
-    
+- [✔] Linear Search
+- [✔] Binary Search
+
+Date: 08-06-2026
+
+- [✔] Union of two sorted arrays
+- [✔] Find missing number
