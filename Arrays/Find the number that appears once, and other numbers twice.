@@ -1,0 +1,194 @@
+'''
+Single Number
+
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Example 1:
+Input: nums = [2,2,1]
+Output: 1
+
+Example 2:
+Input: nums = [4,1,2,1,2]
+Output: 4
+
+Example 3:
+Input: nums = [1]
+Output: 1
+
+'''
+
+'''
+
+Short Trick:-
+
+What XOR actually does
+
+XOR compares bits position by position:
+
+Bit A	Bit B	A ^ B
+0	     0	      0
+0	     1	      1
+1	     0	      1
+1	     1	      0
+
+It returns 1 when the bits are different and 0 when they are the same.
+
+6 = 110
+3 = 011
+-------------
+^   101 = 5
+
+Why the Single Number solution works
+
+Suppose:
+
+[4, 1, 2, 1, 2]
+
+Then
+
+4 ^ 1 ^ 2 ^ 1 ^ 2
+= 4 ^ (1 ^ 1) ^ (2 ^ 2)
+= 4 ^ 0 ^ 0
+= 4
+
+All duplicated numbers cancel out, leaving only the unique number.
+
+A useful way to think about XOR is "bit cancellation"
+
+'''
+
+'''
+
+There are two common ways.
+
+## Method 1: Repeated Division by 2
+
+Divide the number by 2 repeatedly and write down the remainders. Read the remainders from bottom to top.
+
+Example: Convert **13** to binary.
+
+| Division | Quotient | Remainder |
+| -------- | -------- | --------- |
+| 13 ÷ 2   | 6        | 1         |
+| 6 ÷ 2    | 3        | 0         |
+| 3 ÷ 2    | 1        | 1         |
+| 1 ÷ 2    | 0        | 1         |
+
+Read remainders from bottom to top:
+
+```text
+1101
+```
+
+So:
+
+```text
+13₁₀ = 1101₂
+```
+
+---
+
+## Method 2: Using Powers of 2
+
+Find the largest power of 2 less than or equal to the number.
+
+Example: Convert **13**.
+
+Powers of 2:
+
+```text
+8  4  2  1
+```
+
+Check if each fits into 13:
+
+```text
+13 - 8 = 5   → 1
+5 - 4 = 1    → 1
+1 < 2        → 0
+1 - 1 = 0    → 1
+```
+
+Therefore:
+
+```text
+8 4 2 1
+1 1 0 1
+```
+
+Result:
+
+```text
+13 = 1101₂
+```
+
+---
+
+### Quick Examples
+
+```text
+1  = 1
+2  = 10
+3  = 11
+4  = 100
+5  = 101
+6  = 110
+7  = 111
+8  = 1000
+9  = 1001
+10 = 1010
+```
+
+### In Python
+
+```python
+n = 13
+print(bin(n))
+```
+
+Output:
+
+```text
+0b1101
+```
+
+The `0b` prefix means "binary".
+
+If you're learning XOR for LeetCode, it's also very useful to memorize the binary forms of numbers 0–15:
+
+
+0  = 0000
+1  = 0001
+2  = 0010
+3  = 0011
+4  = 0100
+5  = 0101
+6  = 0110
+7  = 0111
+8  = 1000
+9  = 1001
+10 = 1010
+11 = 1011
+12 = 1100
+13 = 1101
+14 = 1110
+15 = 1111
+
+This makes XOR problems much easier to visualize.
+
+'''
+from typing import List
+nums = [4,1,2,1,2]
+
+class Solution:
+    def singleNum(self, nums: List[int]) -> int:
+        result = 0
+
+        for i in nums:
+            result^=i
+        return result
+
+obj = Solution()
+print(obj.singleNum(nums))        
