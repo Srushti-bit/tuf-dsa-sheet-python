@@ -1,0 +1,145 @@
+'''
+Longest Subarray with Sum K
+
+Given an array arr[] containing integers and an integer k, your task is to find the length of the longest subarray where the sum of its elements is equal to the given value k. If there is no subarray with sum equal to k, return 0.
+
+Examples:
+
+Input: arr[] = [10, 5, 2, 7, 1, -10], k = 15
+Output: 6
+Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. 
+The length of the longest subarray with a sum of 15 is 6.
+
+Input: arr[] = [-5, 8, -14, 2, 4, 12], k = -5
+Output: 5
+Explanation: Subarrays with sum = -5 are [-5] and [-5, 8, -14, 2, 4]. 
+The length of the longest subarray with a sum of -5 is 5.
+
+Input: arr[] = [10, -10, 20, 30], k = 5
+Output: 0
+Explanation: No subarray with sum = 5 is present in arr[].
+
+'''
+
+''''
+Shortrick:->
+
+The array is:
+
+[10, 5, 2, 7, 1, 9]
+
+We want subarrays whose sum = 15
+
+We compute CUMULATIVE SUM (prefix sum)
+
+At each index:
+
+Index	Value	Prefix Sum
+0	     10	     10
+1	     5	     15
+2	     2	     17
+3	     7	     24
+4	     1	     25
+5	     9	     34
+
+10 → 15 → 17 → 24 → 25 → 34
+
+* Dictionary idea  {key: value}
+
+The hash map stores:
+
+prefix_sum → index
+
+So:
+{10:0, 15:1, 17:2, 24:3, 25:4, 34:5}
+
+This helps us quickly check earlier sums.
+
+* Key trick 
+
+At every step we compute:
+
+prefix_sum - K
+
+Because:
+If (prefix_sum - K) was seen before → subarray exists
+
+* Now follow arrows 
+🔹 At prefix sum = 25 (index 4)
+
+We compute:
+25 - 15 = 10
+
+Now check dictionary:
+
+10 exists at index 0
+
+So subarray is:
+index 1 to 4 → [5, 2, 7, 1]
+
+Sum = 15 ✔
+
+Length = 4
+
+#---------------------------------------------------------------------------------------------
+
+* At prefix sum = 34 (index 5)
+
+We compute:
+
+34 - 15 = 19
+
+But:
+
+19 is NOT in dictionary ❌
+
+So no valid subarray ends here using this check.
+
+#---------------------------------------------------------------------------------------------
+
+At prefix sum = 15 (index 1)
+
+We directly see:
+
+prefix_sum == K
+
+So subarray:
+
+[10, 5]
+
+Length = 2
+
+#---------------------------------------------------------------------------------------------
+
+Final one-line meaning (simplified)
+
+We track running sums, store them in a dictionary, 
+and whenever the difference between current sum and a past sum equals K, 
+we instantly identify a valid subarray.
+
+'''
+nums = [10, 5, 2, 7, 1, 9]
+k=15
+
+class Solution:
+    def longestSubarray(self, nums, k):
+        max_length = 0
+        cum_sum = 0
+        cum_sum_map = { }
+
+        for i in range(len(nums)):
+            cum_sum += nums[i]
+
+            if cum_sum == k:
+                max_length = i + 1
+
+            if (cum_sum - k) in cum_sum_map:
+                max_length = max(max_length, i - cum_sum_map[cum_sum - k])
+
+            if cum_sum not in cum_sum_map:
+                cum_sum_map[cum_sum] = i
+        return max_length  
+
+obj = Solution()
+print(obj.longestSubarray(nums, k))
+                        
