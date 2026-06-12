@@ -29,3 +29,7 @@ Datw: 11-06-2026
 
 - [✔] Maximum Consecutive Ones
 - [✔] Find the number that appears once, and other numbers twice.
+
+Date: 12-06-2026
+
+- [✔] Longest Subarray with Sum K
