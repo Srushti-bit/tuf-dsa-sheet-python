@@ -33,3 +33,10 @@ Datw: 11-06-2026
 Date: 12-06-2026
 
 - [✔] Longest Subarray with Sum K
+
+## Strings
+
+Date: 16-06-2026
+
+- [✔] Remove Outermost parentheses
+- [✔] Largest Odd Number in a String
